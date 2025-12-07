@@ -1,3 +1,4 @@
+
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { ClinicConfig } from '../types';
 import { DataService } from '../services/dataService';
@@ -31,9 +32,8 @@ export const ClinicProvider: React.FC<{ children: ReactNode }> = ({ children }) 
   useEffect(() => {
     const checkEmergencies = async () => {
         const stats = await DataService.getStats();
-        // If there are emergencies and we haven't acknowledged them all locally (simplified logic)
-        // In a real app, we'd check specific IDs. Here we check count > 0.
-        if (stats.emergencyCount > 0) {
+        // Trigger alarm ONLY if there are unacknowledged emergencies
+        if (stats.unacknowledgedEmergencies > 0) {
              setIsEmergencyRinging(true);
         } else {
              setIsEmergencyRinging(false);

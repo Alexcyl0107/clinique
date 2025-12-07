@@ -168,6 +168,7 @@ export interface DashboardStats {
   totalProducts: number;
   salesData: { name: string; sales: number }[];
   emergencyCount: number;
+  unacknowledgedEmergencies: number; // Used to trigger the alarm
   topProducts: { name: string; quantity: number }[];
 }
 
