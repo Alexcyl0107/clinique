@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState, useRef } from 'react';
 import { DataService } from '../services/dataService';
 import { GeminiService } from '../services/geminiService';
@@ -368,7 +367,7 @@ export const PharmacyAdmin: React.FC = () => {
                  <div className="overflow-x-auto">
                      <table className="min-w-full"><thead className="bg-gray-50 dark:bg-gray-700"><tr><th className="p-2 text-left">Produit</th><th className="p-2 text-right">Compté</th></tr></thead>
                      <tbody>
-                       {Object.values(inventorySession).map(item => (
+                       {Object.values(inventorySession).map((item: InventorySessionItem) => (
                          <tr key={item.productId} className="border-b dark:border-gray-700">
                            <td className="p-2">{item.productName}</td>
                            <td className="p-2 text-right"><input type="number" className="border w-20 p-1" value={item.countedStock} onChange={(e) => handleCountUpdate(item.productId, parseInt(e.target.value))}/></td>
